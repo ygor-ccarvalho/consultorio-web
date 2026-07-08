@@ -36,6 +36,19 @@ public class PacienteService {
 		return new PacienteDTO(newObj);
 	}
 	
+	public PacienteDTO update(Long id, PacienteDTO objDTO) {
+		buscarEntidade(id);
+		objDTO.setId(id);
+		validaPorCpf(objDTO);
+		Paciente obj = new Paciente(objDTO);
+		return new PacienteDTO(repository.save(obj));
+	}
+	
+	public void delete(Long id) {
+		buscarEntidade(id);
+		repository.deleteById(id);
+	}
+	
 	public Paciente buscarEntidade(Long id) {
 		return repository.findById(id)
 				.orElseThrow(() -> new ObjectNotFoundException("Paciente não encontrado: " + id));
