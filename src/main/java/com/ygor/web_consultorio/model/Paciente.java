@@ -4,6 +4,7 @@ import java.time.LocalDate;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -30,17 +31,34 @@ public class Paciente {
 	@NotBlank
 	private String nome;
 	
+	@NotBlank
+	private String email;
+	
+	@NotBlank
+	private String endereco;
+	
+	@NotBlank
+	private String telefone;
+	
 	@CPF(message = "CPF inválido")
 	@Column(unique = true)
 	private String cpf;
-	private String sexo;
-	private String endereco;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
-	private String telefone;
+	
+	@JsonFormat(pattern = "dd/MM/yyyy")
+	private LocalDate dataCriacao = LocalDate.now();
+	
 	private String convenio;
 	private String profissao;
 	private String nomePai;
 	private String nomeMae;
+	private String sexo;
+
+	
+	
+
 	
 	
 	
