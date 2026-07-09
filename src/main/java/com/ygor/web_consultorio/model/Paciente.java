@@ -16,11 +16,13 @@ import jakarta.persistence.Id;
 import jakarta.validation.constraints.NotBlank;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
+@NoArgsConstructor
 @EqualsAndHashCode(of = {"id", "cpf"})
 public class Paciente implements Serializable{
 	private static final long serialVersionUID = 1L;
@@ -56,6 +58,8 @@ public class Paciente implements Serializable{
 	private String nomePai;
 	private String nomeMae;
 	private String sexo;
+	
+	
 	
 	public Paciente(Long id, String nome, String email, String endereco, String telefone, String cpf, String convenio, 
 			String profissao, String nomePai, String nomeMae, String sexo) {
