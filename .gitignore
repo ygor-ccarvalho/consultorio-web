@@ -49,3 +49,6 @@ release.properties
 # OS
 .DS_Store
 Thumbs.db
+
+# Postman
+postman/*.postman_environment.json
