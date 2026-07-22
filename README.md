@@ -16,11 +16,10 @@ fluxo financeiro, lembretes via WhatsApp e relatórios.
 
 - [x] CRUD de Pacientes
 - [x] Agenda de Consultas
-- [ ] Fluxo financeiro
+- [x] Fluxo financeiro (lançamentos)
 - [ ] Lembretes via WhatsApp
 
 ## Documentação da API
 
 A coleção de requisições do Postman está versionada na pasta [`/postman`](./postman).
 Importe o arquivo `consultorio-web.postman_collection.json` no Postman para testar os endpoints.
-
