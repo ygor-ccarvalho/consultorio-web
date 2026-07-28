@@ -19,38 +19,48 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping(value = "/pacientes")
 @RequiredArgsConstructor
 public class PacienteController {
-	
+
 	private final PacienteService service;
-	
+
 	@GetMapping(value = "/{id}")
-	public ResponseEntity<PacienteDTO> findById(@PathVariable Long id){
+	public ResponseEntity<PacienteDTO> findById(@PathVariable Long id) {
 		PacienteDTO dto = service.findById(id);
 		return ResponseEntity.ok().body(dto);
 	}
-	
+
+	@GetMapping(value = "/ativos")
+	public ResponseEntity<List<PacienteDTO>> findByAtivoTrue() {
+		List<PacienteDTO> listDTO = service.findByAtivoTrue();
+		return ResponseEntity.ok().body(listDTO);
+	}
+
+	@GetMapping(value = "/inativos")
+	public ResponseEntity<List<PacienteDTO>> findByAtivoFalse() {
+		List<PacienteDTO> listDTO = service.findByAtivoFalse();
+		return ResponseEntity.ok().body(listDTO);
+	}
+
 	@GetMapping
-	public ResponseEntity<List<PacienteDTO>> findAll(){
+	public ResponseEntity<List<PacienteDTO>> findAll() {
 		List<PacienteDTO> listDTO = service.findAll();
 		return ResponseEntity.ok().body(listDTO);
 	}
-	
+
 	@PostMapping
-	public ResponseEntity<PacienteDTO> create(@Validated(CreateGroup.class) @RequestBody PacienteDTO objDTO){
+	public ResponseEntity<PacienteDTO> create(@Validated(CreateGroup.class) @RequestBody PacienteDTO objDTO) {
 		PacienteDTO newObj = service.create(objDTO);
-		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
-				.path("/{id}").buildAndExpand(newObj.getId()).toUri();
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest().path("/{id}").buildAndExpand(newObj.getId()).toUri();
 		return ResponseEntity.created(uri).body(newObj);
 	}
-	
+
 	@PutMapping(value = "/{id}")
 	public ResponseEntity<PacienteDTO> update(@PathVariable Long id,
-			@Validated(UpdateGroup.class) @RequestBody PacienteDTO objDTO){
+			@Validated(UpdateGroup.class) @RequestBody PacienteDTO objDTO) {
 		return ResponseEntity.ok().body(service.update(id, objDTO));
 	}
 
-	
 	@DeleteMapping(value = "/{id}")
-	public ResponseEntity<Void> delete(@PathVariable Long id){
+	public ResponseEntity<Void> delete(@PathVariable Long id) {
 		service.delete(id);
 		return ResponseEntity.noContent().build();
 	}

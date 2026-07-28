@@ -1,8 +1,9 @@
-INSERT INTO paciente (nome, email, endereco, telefone, cpf, data_nascimento, convenio, profissao, nome_pai, nome_mae, sexo) VALUES
-('Mariana Alves Ferreira', 'mariana.ferreira@gmail.com', 'Rua das Acácias, 245 - Centro, Santa Rita do Sapucaí - MG', '35991234567', '089.833.390-39', '1990-03-12', 'Unimed', 'Arquiteta', 'Carlos Alberto Ferreira', 'Sandra Regina Alves', 'FEMININO'),
-('João Pedro Machado', 'joao.machado@gmail.com', 'Av. Cel. Joaquim Neto, 512 - Santana, Santa Rita do Sapucaí - MG', '35998765432', '123.456.789-09', '1985-07-25', 'Bradesco Saúde', 'Engenheiro', 'Antônio Machado', 'Rita de Cássia', 'MASCULINO'),
-('Beatriz Souza Lima', 'bia.lima@gmail.com', 'Rua São Paulo, 78 - Centro, Pouso Alegre - MG', '35997654321', '987.654.321-00', '1998-11-05', 'Particular', 'Estudante', 'Marcos Lima', 'Fernanda Souza', 'FEMININO'),
-('Ricardo Nunes Teixeira', 'ricardo.teixeira@gmail.com', 'Rua das Flores, 330 - Jardim América, Itajubá - MG', '35991112233', '456.789.123-72', '1979-02-18', 'Amil', 'Advogado', 'José Teixeira', 'Lúcia Nunes', 'MASCULINO');
+INSERT INTO paciente (nome, email, endereco, telefone, cpf, data_nascimento, convenio, profissao, nome_pai, nome_mae, sexo, ativo) VALUES
+('Mariana Alves Ferreira', 'mariana.ferreira@gmail.com', 'Rua das Acácias, 245 - Centro, Santa Rita do Sapucaí - MG', '35991234567', '089.833.390-39', '1990-03-12', 'Unimed', 'Arquiteta', 'Carlos Alberto Ferreira', 'Sandra Regina Alves', 'FEMININO', true),
+('João Pedro Machado', 'joao.machado@gmail.com', 'Av. Cel. Joaquim Neto, 512 - Santana, Santa Rita do Sapucaí - MG', '35998765432', '123.456.789-09', '1985-07-25', 'Bradesco Saúde', 'Engenheiro', 'Antônio Machado', 'Rita de Cássia', 'MASCULINO', true),
+('Beatriz Souza Lima', 'bia.lima@gmail.com', 'Rua São Paulo, 78 - Centro, Pouso Alegre - MG', '35997654321', '987.654.321-00', '1998-11-05', 'Particular', 'Estudante', 'Marcos Lima', 'Fernanda Souza', 'FEMININO', true),
+('Ricardo Nunes Teixeira', 'ricardo.teixeira@gmail.com', 'Rua das Flores, 330 - Jardim América, Itajubá - MG', '35991112233', '456.789.123-72', '1979-02-18', 'Amil', 'Advogado', 'José Teixeira', 'Lúcia Nunes', 'MASCULINO', true),
+('Rinaldo Antunes Teixeira', 'rinaldo.teixeira@gmail.com', 'Rua das Pedras, 323 - Jardim Europa, Pouso Alegre - MG', '35991112244', '780.298.560-91', '1959-05-23', 'Unimed', 'Advogado', 'José Teixeira Vieira', 'Lúcia Antunes', 'MASCULINO', false);
 
 
 INSERT INTO consulta (data_hora, duracao_minutos, valor, status, tipo, observacoes, paciente_id) VALUES

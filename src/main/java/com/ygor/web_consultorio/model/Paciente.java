@@ -23,82 +23,78 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-@EqualsAndHashCode(of = {"id", "cpf"})
-public class Paciente implements Serializable{
+@EqualsAndHashCode(of = { "id", "cpf" })
+public class Paciente implements Serializable {
 	private static final long serialVersionUID = 1L;
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long id;
-	
+
 	@NotBlank
 	private String nome;
-	
+
 	@NotBlank
 	private String email;
-	
+
 	@NotBlank
 	private String endereco;
-	
+
 	@NotBlank
 	private String telefone;
-	
+
 	@CPF(message = "CPF inválido")
 	@Column(unique = true)
 	private String cpf;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataCriacao = LocalDate.now();
-	
+
+	@Column(nullable = false)
+	private Boolean ativo;
+
 	private String convenio;
 	private String profissao;
 	private String nomePai;
 	private String nomeMae;
 	private String sexo;
-	
-	
-	
-	public Paciente(Long id, String nome, String email, String endereco, String telefone, String cpf, String convenio, 
-			String profissao, String nomePai, String nomeMae, String sexo) {
+
+	public Paciente(Long id, String nome, String email, String endereco, String telefone, String cpf, String convenio,
+			String profissao, String nomePai, String nomeMae, String sexo, Boolean ativo) {
 		this.id = id;
-        this.nome = nome;
-        this.email = email;
-        this.endereco = endereco;
-        this.telefone = telefone;
-        this.cpf = cpf;
-        this.convenio = convenio;
-        this.profissao = profissao;
-        this.nomePai = nomePai;
-        this.nomeMae = nomeMae;
-        this.sexo = sexo;
+		this.nome = nome;
+		this.email = email;
+		this.endereco = endereco;
+		this.telefone = telefone;
+		this.cpf = cpf;
+		this.convenio = convenio;
+		this.profissao = profissao;
+		this.nomePai = nomePai;
+		this.nomeMae = nomeMae;
+		this.sexo = sexo;
+		this.ativo = ativo;
 	}
-	
-	
+
 	public Paciente(PacienteDTO obj) {
-        super();
-        this.id = obj.getId();
-        this.nome = obj.getNome();
-        this.email = obj.getEmail();
-        this.endereco = obj.getEndereco();
-        this.telefone = obj.getTelefone();
-        this.cpf = obj.getCpf();
-        this.dataNascimento = obj.getDataNascimento();
-        this.dataCriacao = obj.getDataCriacao();
-        this.convenio = obj.getConvenio();
-        this.profissao = obj.getProfissao();
-        this.nomePai = obj.getNomePai();
-        this.nomeMae = obj.getNomeMae();
-        this.sexo = obj.getSexo();
-        
-    }
+		super();
+		this.id = obj.getId();
+		this.nome = obj.getNome();
+		this.email = obj.getEmail();
+		this.endereco = obj.getEndereco();
+		this.telefone = obj.getTelefone();
+		this.cpf = obj.getCpf();
+		this.dataNascimento = obj.getDataNascimento();
+		this.dataCriacao = obj.getDataCriacao();
+		this.convenio = obj.getConvenio();
+		this.profissao = obj.getProfissao();
+		this.nomePai = obj.getNomePai();
+		this.nomeMae = obj.getNomeMae();
+		this.sexo = obj.getSexo();
+		this.ativo = obj.getAtivo();
 
-	
-	
+	}
 
-	
-	
-	
 }

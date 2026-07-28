@@ -18,46 +18,55 @@ import lombok.RequiredArgsConstructor;
 public class PacienteService {
 
 	private final PacienteRepository repository;
-	
+
 	public List<PacienteDTO> findAll() {
-		return repository.findAll().stream()
-				.map(PacienteDTO::new)
-				.toList();
+		return repository.findAll().stream().map(PacienteDTO::new).toList();
 	}
-	
+
+	public List<PacienteDTO> findByAtivoTrue() {
+		return repository.findByAtivo(true).stream().map(PacienteDTO::new).toList();
+	}
+
+	public List<PacienteDTO> findByAtivoFalse() {
+		return repository.findByAtivo(false).stream().map(PacienteDTO::new).toList();
+	}
+
 	public PacienteDTO findById(Long id) {
 		return new PacienteDTO(buscarEntidade(id));
-		}
-	
+	}
+
 	public PacienteDTO create(PacienteDTO objDTO) {
 		objDTO.setId(null);
+		objDTO.setAtivo(true);
 		validaPorCpf(objDTO);
 		Paciente newObj = repository.save(new Paciente(objDTO));
 		return new PacienteDTO(newObj);
 	}
-	
+
 	public PacienteDTO update(Long id, PacienteDTO objDTO) {
-		buscarEntidade(id);
+		Paciente obj = buscarEntidade(id);
 		objDTO.setId(id);
 		validaPorCpf(objDTO);
-		Paciente obj = new Paciente(objDTO);
+		objDTO.setAtivo(obj.getAtivo());
+		objDTO.setDataCriacao(obj.getDataCriacao());
+		obj = new Paciente(objDTO);
 		return new PacienteDTO(repository.save(obj));
 	}
-	
+
 	public void delete(Long id) {
-		buscarEntidade(id);
-		repository.deleteById(id);
+		Paciente obj = buscarEntidade(id);
+		obj.setAtivo(false);
+		repository.save(obj);
 	}
-	
+
 	public Paciente buscarEntidade(Long id) {
-		return repository.findById(id)
-				.orElseThrow(() -> new ObjectNotFoundException("Paciente não encontrado: " + id));
+		return repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Paciente não encontrado: " + id));
 	}
-	
+
 	private void validaPorCpf(PacienteDTO objDTO) {
-	Optional<Paciente> obj = repository.findByCpf(objDTO.getCpf()); 
-	if (obj.isPresent() && !obj.get().getId().equals(objDTO.getId())) {
-		throw new DataBindingViolationException("CPF já cadastrado no sistema!");
-	}
+		Optional<Paciente> obj = repository.findByCpf(objDTO.getCpf());
+		if (obj.isPresent() && !obj.get().getId().equals(objDTO.getId())) {
+			throw new DataBindingViolationException("CPF já cadastrado no sistema!");
+		}
 	}
 }

@@ -16,39 +16,39 @@ import lombok.Setter;
 @Getter
 @Setter
 @NoArgsConstructor
-public class PacienteDTO implements Serializable{
+public class PacienteDTO implements Serializable {
 	private static final long serialVersionUID = 1L;
-	
+
 	private Long id;
-	
-	@NotNull(groups = {CreateGroup.class, UpdateGroup.class}, message = "O campo nome é obrigatório")
+
+	@NotNull(groups = { CreateGroup.class, UpdateGroup.class }, message = "O campo nome é obrigatório")
 	protected String nome;
 
-	@NotNull(groups = {CreateGroup.class, UpdateGroup.class}, message = "O campo CPF é obrigatório")
+	@NotNull(groups = { CreateGroup.class, UpdateGroup.class }, message = "O campo CPF é obrigatório")
 	protected String cpf;
 
-	@NotNull(groups = {CreateGroup.class, UpdateGroup.class}, message = "O campo Email é obrigatório")
+	@NotNull(groups = { CreateGroup.class, UpdateGroup.class }, message = "O campo Email é obrigatório")
 	protected String email;
-	
+
 	private String sexo;
 	private String endereco;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	private LocalDate dataNascimento;
-	
+
 	@JsonFormat(pattern = "dd/MM/yyyy")
 	protected LocalDate dataCriacao = LocalDate.now();
 
-	
 	@NotNull
 	private String telefone;
 	@NotNull
 	private String convenio;
-	
+
 	private String profissao;
 	private String nomePai;
 	private String nomeMae;
-	
+	private Boolean ativo;
+
 	public PacienteDTO(Paciente obj) {
 		this.id = obj.getId();
 		this.nome = obj.getNome();
@@ -63,5 +63,6 @@ public class PacienteDTO implements Serializable{
 		this.profissao = obj.getProfissao();
 		this.nomePai = obj.getNomePai();
 		this.nomeMae = obj.getNomeMae();
+		this.ativo = obj.getAtivo();
 	}
 }
