@@ -11,271 +11,419 @@
       "name": "Pacientes",
       "item": [
         {
-          "name": "findAll",
-          "event": [
+          "name": "Sucesso",
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "POST criar paciente  (201)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.environment.set(\"pacienteId\", pm.response.json().id);\r",
+                      "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/pacientes",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "pacientes"
-              ]
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Marina Alves Ferreira\",\r\n    \"email\": \"marina.ferreira@gmail.com\",\r\n    \"endereco\": \"Rua das Acácias, 245 - Apto 32, Centro, Santa Rita do Sapucaí - MG\",\r\n    \"telefone\": \"35991234567\",\r\n    \"cpf\": \"580.538.760-30\",\r\n    \"dataNascimento\": \"12/03/1990\",\r\n    \"convenio\": \"Unimed\",\r\n    \"profissao\": \"Arquiteta\",\r\n    \"nomePai\": \"Carlos Alberto Ferreira\",\r\n    \"nomeMae\": \"Sandra Regina Alves\",\r\n    \"sexo\": \"FEMININO\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar todos os pacientes (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar ativos (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/ativos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "ativos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar inativos (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/inativos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "inativos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET buscar por id (200)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT atualizar paciente (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Marina Alves Ferreira\",\r\n    \"email\": \"marina.ferreira@gmail.com\",\r\n    \"endereco\": \"Av. Cel. Joaquim Neto, 890 - Bairro Santana, Santa Rita do Sapucaí - MG\",\r\n    \"telefone\": \"35998887766\",\r\n    \"cpf\": \"580.538.760-30\",\r\n    \"dataNascimento\": \"12/03/1990\",\r\n    \"convenio\": \"Bradesco Saúde\",\r\n    \"profissao\": \"Arquiteta e Urbanista\",\r\n    \"nomePai\": \"Carlos Alberto Ferreira\",\r\n    \"nomeMae\": \"Sandra Regina Alves\",\r\n    \"sexo\": \"FEMININO\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE soft delete (204)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 204\", () => pm.response.to.have.status(204));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}"
+                  ]
+                }
+              },
+              "response": []
             }
-          },
-          "response": []
+          ]
         },
         {
-          "name": "findByAtivoTrue",
-          "event": [
+          "name": "Erros",
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "POST campo inválido (422)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 422\", () => pm.response.to.have.status(422));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/pacientes/ativos",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "pacientes",
-                "ativos"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "findByAtivoFalse",
-          "event": [
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Marina Alves Ferreira\",\r\n    \"email\": \"marina.ferreira@gmail.com\",\r\n    \"endereco\": \"Rua das Acácias, 245 - Apto 32, Centro, Santa Rita do Sapucaí - MG\",\r\n    \"telefone\": \"35991234567\",\r\n    \"dataNascimento\": \"12/03/1990\",\r\n    \"convenio\": \"Unimed\",\r\n    \"profissao\": \"Arquiteta\",\r\n    \"nomePai\": \"Carlos Alberto Ferreira\",\r\n    \"nomeMae\": \"Sandra Regina Alves\",\r\n    \"sexo\": \"FEMININO\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes"
+                  ]
+                }
+              },
+              "response": []
+            },
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "POST campos duplicados (409)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 409\", () => pm.response.to.have.status(409));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/pacientes/inativos",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "pacientes",
-                "inativos"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "create",
-          "event": [
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Mariana Alves Ferreira\",\r\n    \"email\": \"mariana.ferreira@gmail.com\",\r\n    \"endereco\": \"Rua das Acácias, 245 - Centro, Santa Rita do Sapucaí - MG\",\r\n    \"telefone\": \"35991234567\",\r\n    \"cpf\": \"089.833.390-39\",\r\n    \"dataNascimento\": \"12/03/1990\",\r\n    \"convenio\": \"Unimed\",\r\n    \"profissao\": \"Arquiteta\",\r\n    \"nomePai\": \"Carlos Alberto Ferreira\",\r\n    \"nomeMae\": \"Sandra Regina Alves\",\r\n    \"sexo\": \"FEMININO\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes"
+                  ]
+                }
+              },
+              "response": []
+            },
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.environment.set(\"pacienteId\", pm.response.json().id);\r",
-                  "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r",
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"nome\": \"Marina Alves Ferreira\",\r\n    \"email\": \"marina.ferreira@gmail.com\",\r\n    \"endereco\": \"Rua das Acácias, 245 - Apto 32, Centro, Santa Rita do Sapucaí - MG\",\r\n    \"telefone\": \"35991234567\",\r\n    \"cpf\": \"580.538.760-30\",\r\n    \"dataNascimento\": \"12/03/1990\",\r\n    \"convenio\": \"Unimed\",\r\n    \"profissao\": \"Arquiteta\",\r\n    \"nomePai\": \"Carlos Alberto Ferreira\",\r\n    \"nomeMae\": \"Sandra Regina Alves\",\r\n    \"sexo\": \"FEMININO\"\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "GET id Inexistente (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}/pacientes/999",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "999"
+                  ]
                 }
-              }
+              },
+              "response": []
             },
-            "url": {
-              "raw": "{{local}}/pacientes",
-              "host": [
-                "{{local}}"
-              ],
-              "path": [
-                "pacientes"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "findById",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{local}}/pacientes/{{pacienteId}}",
-              "host": [
-                "{{local}}"
-              ],
-              "path": [
-                "pacientes",
-                "{{pacienteId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "update",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"nome\": \"Marina Alves Ferreira\",\r\n    \"email\": \"marina.ferreira@gmail.com\",\r\n    \"endereco\": \"Av. Cel. Joaquim Neto, 890 - Bairro Santana, Santa Rita do Sapucaí - MG\",\r\n    \"telefone\": \"35998887766\",\r\n    \"cpf\": \"580.538.760-30\",\r\n    \"dataNascimento\": \"12/03/1990\",\r\n    \"convenio\": \"Bradesco Saúde\",\r\n    \"profissao\": \"Arquiteta e Urbanista\",\r\n    \"nomePai\": \"Carlos Alberto Ferreira\",\r\n    \"nomeMae\": \"Sandra Regina Alves\",\r\n    \"sexo\": \"FEMININO\"\r\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "PUT id inexistente (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/pacientes/{{pacienteId}}",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "pacientes",
-                "{{pacienteId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "delete",
-          "event": [
-            {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"status 204\", () => pm.response.to.have.status(204));"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"Marina Alves Ferreira\",\r\n    \"email\": \"marina.ferreira@gmail.com\",\r\n    \"endereco\": \"Av. Cel. Joaquim Neto, 890 - Bairro Santana, Santa Rita do Sapucaí - MG\",\r\n    \"telefone\": \"35998887766\",\r\n    \"cpf\": \"580.538.760-30\",\r\n    \"dataNascimento\": \"12/03/1990\",\r\n    \"convenio\": \"Bradesco Saúde\",\r\n    \"profissao\": \"Arquiteta e Urbanista\",\r\n    \"nomePai\": \"Carlos Alberto Ferreira\",\r\n    \"nomeMae\": \"Sandra Regina Alves\",\r\n    \"sexo\": \"FEMININO\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/999",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "999"
+                  ]
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/pacientes/{{pacienteId}}",
-              "host": [
-                "{{local}}"
-              ],
-              "path": [
-                "pacientes",
-                "{{pacienteId}}"
-              ]
+              },
+              "response": []
             }
-          },
-          "response": []
+          ]
         }
       ]
     },
@@ -283,172 +431,361 @@
       "name": "Consultas",
       "item": [
         {
-          "name": "findAll",
-          "event": [
+          "name": "Sucesso",
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "POST criar consulta (201)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.environment.set(\"consultaId\", pm.response.json().id);\r",
+                      "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/consultas",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "consultas"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "create",
-          "event": [
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"dataHora\": \"20/07/2028 09:00:00\",\r\n    \"duracaoMinutos\": 50,\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"PRIMEIRA_CONSULTA\",\r\n    \"observacoes\": \"Paciente encaminhada pela clínica parceira. Queixa inicial: ansiedade e insônia.\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.environment.set(\"consultaId\", pm.response.json().id);\r",
-                  "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r",
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"dataHora\": \"22/07/2026 09:00:00\",\r\n    \"duracaoMinutos\": 50,\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"PRIMEIRA_CONSULTA\",\r\n    \"observacoes\": \"Paciente encaminhada pela clínica parceira. Queixa inicial: ansiedade e insônia.\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "POST remarcar horário cancelado (201)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.environment.set(\"consultaId\", pm.response.json().id);\r",
+                      "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/consultas",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "consultas"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "findById",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{local}}/consultas/{{consultaId}}",
-              "host": [
-                "{{local}}"
-              ],
-              "path": [
-                "consultas",
-                "{{consultaId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"dataHora\": \"28/07/2026 09:00:00\",\r\n    \"duracaoMinutos\": 50,\r\n    \"valor\": 150.00,\r\n    \"tipo\": \"AVALIACAO\",\r\n    \"status\": \"CONFIRMADA\",\r\n    \"observacoes\": \"Retorno após primeira sessão. Evolução positiva no quadro de ansiedade.\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"dataHora\": \"20/07/2029 09:00:00\",\r\n    \"duracaoMinutos\": 50,\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"PRIMEIRA_CONSULTA\",\r\n    \"observacoes\": \"Reagendada no mesmo horario apos cancelamento.\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
                 }
-              }
+              },
+              "response": []
             },
-            "url": {
-              "raw": "{{local}}/consultas/{{consultaId}}",
-              "host": [
-                "{{local}}"
-              ],
-              "path": [
-                "consultas",
-                "{{consultaId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "delete",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"status 204\", () => pm.response.to.have.status(204));"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "GET listar consultas (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/consultas/{{consultaId}}",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "consultas",
-                "{{consultaId}}"
-              ]
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET buscar por id (200)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}/consultas/{{consultaId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "{{consultaId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT atualizar consulta (200)",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"dataHora\": \"28/07/2026 09:00:00\",\r\n    \"duracaoMinutos\": 50,\r\n    \"valor\": 150.00,\r\n    \"tipo\": \"AVALIACAO\",\r\n    \"status\": \"CONFIRMADA\",\r\n    \"observacoes\": \"Retorno após primeira sessão. Evolução positiva no quadro de ansiedade.\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas/{{consultaId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "{{consultaId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE consulta (204)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 204\", () => pm.response.to.have.status(204));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas/{{consultaId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "{{consultaId}}"
+                  ]
+                }
+              },
+              "response": []
             }
-          },
-          "response": []
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "POST paciente inexistente (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 404\", () => pm.response.to.have.status(404));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"dataHora\": \"22/07/2028 09:00:00\",\r\n    \"duracaoMinutos\": 50,\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"PRIMEIRA_CONSULTA\",\r\n    \"observacoes\": \"Paciente encaminhada pela clínica parceira. Queixa inicial: ansiedade e insônia.\",\r\n    \"pacienteId\": 999\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST horário indisponível (409)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 409\", () => pm.response.to.have.status(409));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"dataHora\": \"20/07/2030 09:00:00\",\r\n    \"duracaoMinutos\": 50,\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"PRIMEIRA_CONSULTA\",\r\n    \"observacoes\": \"Paciente encaminhada pela clínica parceira. Queixa inicial: ansiedade e insônia.\",\r\n    \"pacienteId\": 1\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST campo inválido (422)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 422\", () => pm.response.to.have.status(422));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"dataHora\": \"22/07/2026 09:00:00\",\r\n    \"duracaoMinutos\": 50,\r\n    \"valor\": \"\",\r\n    \"tipo\": \"PRIMEIRA_CONSULTA\",\r\n    \"observacoes\": \"Paciente encaminhada pela clínica parceira. Queixa inicial: ansiedade e insônia.\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET id inexistente (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}/consultas/999",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     },
@@ -456,172 +793,280 @@
       "name": "Lancamentos",
       "item": [
         {
-          "name": "findAll",
-          "event": [
+          "name": "Sucesso",
+          "item": [
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          },
-          "request": {
-            "method": "GET",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "POST criar lançamento (201)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.environment.set(\"lancamentoId\", pm.response.json().id);\r",
+                      "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/lancamentos",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "lancamentos"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "create",
-          "event": [
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"data\": \"22/07/2026\",\r\n    \"descricao\": \"Conta de Luz\",\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"DESPESA\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/lancamentos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "lancamentos"
+                  ]
+                }
+              },
+              "response": []
+            },
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.environment.set(\"consultaId\", pm.response.json().id);\r",
-                  "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r",
-                  ""
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "POST",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"data\": \"22/07/2026\",\r\n    \"descricao\": \"Conta de Luz\",\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"DESPESA\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "GET listar lançamentos (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
                 }
-              }
-            },
-            "url": {
-              "raw": "{{local}}/lancamentos",
-              "host": [
-                "{{local}}"
               ],
-              "path": [
-                "lancamentos"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "findById",
-          "request": {
-            "method": "GET",
-            "header": [],
-            "url": {
-              "raw": "{{local}}/lancamentos/{{consultaId}}",
-              "host": [
-                "{{local}}"
-              ],
-              "path": [
-                "lancamentos",
-                "{{consultaId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "update",
-          "request": {
-            "method": "PUT",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "{\r\n    \"data\": \"22/07/2026\",\r\n    \"descricao\": \"Consulta\",\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"RECEITA\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/lancamentos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "lancamentos"
+                  ]
                 }
-              }
+              },
+              "response": []
             },
-            "url": {
-              "raw": "{{local}}/lancamentos/{{consultaId}}",
-              "host": [
-                "{{local}}"
-              ],
-              "path": [
-                "lancamentos",
-                "{{consultaId}}"
-              ]
-            }
-          },
-          "response": []
-        },
-        {
-          "name": "delete",
-          "event": [
             {
-              "listen": "test",
-              "script": {
-                "exec": [
-                  "pm.test(\"status 204\", () => pm.response.to.have.status(204));"
-                ],
-                "type": "text/javascript",
-                "packages": {},
-                "requests": {}
-              }
-            }
-          ],
-          "request": {
-            "method": "DELETE",
-            "header": [],
-            "body": {
-              "mode": "raw",
-              "raw": "p",
-              "options": {
-                "raw": {
-                  "language": "json"
+              "name": "GET buscar por id (200)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}/lancamentos/{{lancamentoId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "lancamentos",
+                    "{{lancamentoId}}"
+                  ]
                 }
-              }
+              },
+              "response": []
             },
-            "url": {
-              "raw": "{{local}}/lancamentos/{{consultaId}}",
-              "host": [
-                "{{local}}"
+            {
+              "name": "PUT atualizar lançamento (200)",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"data\": \"22/07/2026\",\r\n    \"descricao\": \"Consulta\",\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"RECEITA\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/lancamentos/{{lancamentoId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "lancamentos",
+                    "{{lancamentoId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE lançamento (204)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 204\", () => pm.response.to.have.status(204));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
               ],
-              "path": [
-                "lancamentos",
-                "{{consultaId}}"
-              ]
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/lancamentos/{{lancamentoId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "lancamentos",
+                    "{{lancamentoId}}"
+                  ]
+                }
+              },
+              "response": []
             }
-          },
-          "response": []
+          ]
+        },
+        {
+          "name": "Erro",
+          "item": [
+            {
+              "name": "POST paciente inexistente (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 404\", () => pm.response.to.have.status(404));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"data\": \"22/07/2026\",\r\n    \"descricao\": \"Conta de Luz\",\r\n    \"valor\": 180.00,\r\n    \"tipo\": \"DESPESA\",\r\n    \"pacienteId\": 999\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/lancamentos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "lancamentos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST valor inválido (422)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 422\", () => pm.response.to.have.status(422));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"data\": \"22/07/2026\",\r\n    \"descricao\": \"Conta de Luz\",\r\n    \"valor\": \"\",\r\n    \"tipo\": \"DESPESA\",\r\n    \"pacienteId\": {{pacienteId}}\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/lancamentos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "lancamentos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET id inexistente (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}/lancamentos/999",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "lancamentos",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
         }
       ]
     }

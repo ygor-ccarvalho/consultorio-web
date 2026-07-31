@@ -7,8 +7,9 @@ INSERT INTO paciente (nome, email, endereco, telefone, cpf, data_nascimento, con
 
 
 INSERT INTO consulta (data_hora, duracao_minutos, valor, status, tipo, observacoes, paciente_id) VALUES
-('2026-07-20 09:00:00', 50, 180.00, 'AGENDADA', 'PRIMEIRA_CONSULTA', 'Encaminhada pela clínica parceira. Queixa: ansiedade e insônia.', 1),
-('2026-07-27 09:00:00', 50, 150.00, 'CONFIRMADA', 'RETORNO', 'Retorno após primeira sessão. Evolução positiva.', 1),
-('2026-07-21 14:00:00', 50, 150.00, 'REALIZADA', 'SESSAO', 'Sessão de acompanhamento. Trabalhado manejo de estresse.', 2),
-('2026-07-22 10:30:00', 50, 200.00, 'AGENDADA', 'AVALIACAO', 'Início do processo de avaliação neuropsicológica.', 3),
-('2026-07-23 16:00:00', 50, 180.00, 'FALTOU', 'PRIMEIRA_CONSULTA', 'Paciente não compareceu, sem aviso.', 4);
+('2030-07-20 09:00:00', 50, 180.00, 'AGENDADA', 'PRIMEIRA_CONSULTA', 'Encaminhada pela clínica parceira. Queixa: ansiedade e insônia.', 1),
+('2029-07-20 09:00:00', 50, 180.00, 'CANCELADA', 'PRIMEIRA_CONSULTA', 'Cancelada pela paciente. Horario reaberto.', 1),
+('2028-07-27 09:00:00', 50, 150.00, 'CONFIRMADA', 'RETORNO', 'Retorno após primeira sessão. Evolução positiva.', 1),
+('2028-07-21 14:00:00', 50, 150.00, 'REALIZADA', 'SESSAO', 'Sessão de acompanhamento. Trabalhado manejo de estresse.', 2),
+('2028-07-22 10:30:00', 50, 200.00, 'AGENDADA', 'AVALIACAO', 'Início do processo de avaliação neuropsicológica.', 3),
+('2028-07-23 16:00:00', 50, 180.00, 'FALTOU', 'PRIMEIRA_CONSULTA', 'Paciente não compareceu, sem aviso.', 4);

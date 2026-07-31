@@ -6,9 +6,11 @@ import java.util.Optional;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 
+import com.ygor.web_consultorio.enums.StatusConsulta;
 import com.ygor.web_consultorio.model.Consulta;
 
 public interface ConsultaRepository extends JpaRepository<Consulta, Long> {
 	List<Consulta> findByPacienteId(Long id);
-	Optional<Consulta> findByDataHora(LocalDateTime dataHora);
+
+	Optional<Consulta> findByDataHoraAndStatusNot(LocalDateTime dataHora, StatusConsulta status);
 }
