@@ -63,7 +63,7 @@ public class PacienteService {
 		return repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Paciente não encontrado: " + id));
 	}
 
-	private void validaPorCpf(PacienteDTO objDTO) {
+	 void validaPorCpf(PacienteDTO objDTO) {
 		Optional<Paciente> obj = repository.findByCpf(objDTO.getCpf());
 		if (obj.isPresent() && !obj.get().getId().equals(objDTO.getId())) {
 			throw new DataBindingViolationException("CPF já cadastrado no sistema!");
