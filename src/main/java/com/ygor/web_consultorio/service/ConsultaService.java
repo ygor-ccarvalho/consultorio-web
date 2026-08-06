@@ -60,7 +60,7 @@ public class ConsultaService {
 		repository.save(obj);
 	}
 
-	private void validaHorario(ConsultaDTO objDTO, Long id) {
+	void validaHorario(ConsultaDTO objDTO, Long id) {
 		Optional<Consulta> obj = repository.findByDataHoraAndStatusNot(objDTO.getDataHora(), StatusConsulta.CANCELADA);
 
 		if (obj.isPresent() && !obj.get().getId().equals(id)) {
@@ -68,7 +68,7 @@ public class ConsultaService {
 		}
 	}
 
-	private Consulta buscarEntidade(Long id) {
+	 Consulta buscarEntidade(Long id) {
 		return repository.findById(id).orElseThrow(() -> new ObjectNotFoundException("Consulta não encontrada: " + id));
 
 	}
