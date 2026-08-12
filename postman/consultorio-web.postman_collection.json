@@ -428,6 +428,189 @@
       ]
     },
     {
+      "name": "AnotacoesPacientes",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "POST criar paciente  (201)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r",
+                      ""
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"observacao\": \"Paciente relatou melhora no quadro de ansiedade desde a última sessão. Demonstrou boa adesão às técnicas de respiração propostas. Trabalhamos gatilhos no ambiente de trabalho. Manter frequência semanal.\"\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/anotacoes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "anotacoes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar anotacoes por paciente (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/anotacoes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "anotacoes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erros",
+          "item": [
+            {
+              "name": "POST id Inexistente (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 404\", () => pm.response.to.have.status(404));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"observacao\": \"Paciente relatou melhora no quadro de ansiedade desde a última sessão. Demonstrou boa adesão às técnicas de respiração propostas. Trabalhamos gatilhos no ambiente de trabalho. Manter frequência semanal.\"\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/999/anotacoes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "999",
+                    "anotacoes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST anotacao sem observacao (422)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "exec": [
+                      "pm.test(\"status 422\", () => pm.response.to.have.status(422));"
+                    ],
+                    "type": "text/javascript",
+                    "packages": {},
+                    "requests": {}
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"observacao\": \"\"\r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/anotacoes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "anotacoes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Consultas",
       "item": [
         {
