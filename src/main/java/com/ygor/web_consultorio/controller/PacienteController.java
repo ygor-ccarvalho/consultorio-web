@@ -39,12 +39,20 @@ public class PacienteController {
 		List<PacienteDTO> listDTO = service.findByAtivoFalse();
 		return ResponseEntity.ok().body(listDTO);
 	}
+	
+	@GetMapping(value = "/aniversariantes")
+	public ResponseEntity<List<PacienteDTO>> findByAniversario(@RequestParam(defaultValue = "7")int dias){
+		List<PacienteDTO> listDTO = service.aniversariantes(dias);
+		return ResponseEntity.ok().body(listDTO);
+	}
 
 	@GetMapping
 	public ResponseEntity<List<PacienteDTO>> findAll() {
 		List<PacienteDTO> listDTO = service.findAll();
 		return ResponseEntity.ok().body(listDTO);
 	}
+	
+	
 
 	@PostMapping
 	public ResponseEntity<PacienteDTO> create(@Validated(CreateGroup.class) @RequestBody PacienteDTO objDTO) {

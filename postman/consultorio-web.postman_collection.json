@@ -97,6 +97,94 @@
               "response": []
             },
             {
+              "name": "GET listar aniversariantes 7 dias (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/aniversariantes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "aniversariantes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar aniversariantes 30 dias (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/aniversariantes?dias=30",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "aniversariantes"
+                  ],
+                  "query": [
+                    {
+                      "key": "dias",
+                      "value": "30"
+                    }
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
               "name": "GET listar ativos (200)",
               "event": [
                 {

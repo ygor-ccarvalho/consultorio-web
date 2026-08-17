@@ -1,5 +1,6 @@
 package com.ygor.web_consultorio.service;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -69,4 +70,25 @@ public class PacienteService {
 			throw new DataBindingViolationException("CPF já cadastrado no sistema!");
 		}
 	}
+	 
+	 public List<PacienteDTO> aniversariantes(int dias) {
+		    LocalDate hoje = LocalDate.now();
+		    LocalDate limite = hoje.plusDays(dias);
+
+		    return findByAtivoTrue().stream()
+		            .filter(paciente -> {
+		                LocalDate proximo = proximoAniversario(paciente.getDataNascimento(), hoje);
+		                return !proximo.isBefore(hoje) && !proximo.isAfter(limite);
+		            })
+		            .toList();
+		}
+	 
+	 private LocalDate proximoAniversario(LocalDate nascimento, LocalDate hoje) {
+		    LocalDate aniversario = nascimento.withYear(hoje.getYear());
+		    if (aniversario.isBefore(hoje)) {
+		        aniversario = aniversario.plusYears(1);
+		    }
+		    return aniversario;
+		}
+
 }
