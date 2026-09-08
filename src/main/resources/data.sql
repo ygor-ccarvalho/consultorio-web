@@ -13,3 +13,9 @@ INSERT INTO consulta (data_hora, duracao_minutos, valor, status, tipo, observaco
 ('2028-07-21 14:00:00', 50, 150.00, 'REALIZADA', 'SESSAO', 'Sessão de acompanhamento. Trabalhado manejo de estresse.', 2),
 ('2028-07-22 10:30:00', 50, 200.00, 'AGENDADA', 'AVALIACAO', 'Início do processo de avaliação neuropsicológica.', 3),
 ('2028-07-23 16:00:00', 50, 180.00, 'FALTOU', 'PRIMEIRA_CONSULTA', 'Paciente não compareceu, sem aviso.', 4);
+
+
+INSERT INTO avaliacao (paciente_id, status, data_inicio, data_laudo, data_devolutiva, ativo) VALUES
+(3, 'EM_ANDAMENTO', CURRENT_DATE, NULL, NULL, true),
+(3, 'AGUARDANDO_LAUDO', '2028-07-01', '2028-08-15', NULL, true),
+(1, 'CONCLUIDA', '2027-01-10', '2027-02-20', '2027-03-05', false);
