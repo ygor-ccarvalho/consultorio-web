@@ -62,22 +62,6 @@ public class Paciente implements Serializable {
 	private String nomeMae;
 	private String sexo;
 
-	public Paciente(Long id, String nome, String email, String endereco, String telefone, String cpf, String convenio,
-			String profissao, String nomePai, String nomeMae, String sexo, Boolean ativo) {
-		this.id = id;
-		this.nome = nome;
-		this.email = email;
-		this.endereco = endereco;
-		this.telefone = telefone;
-		this.cpf = cpf;
-		this.convenio = convenio;
-		this.profissao = profissao;
-		this.nomePai = nomePai;
-		this.nomeMae = nomeMae;
-		this.sexo = sexo;
-		this.ativo = ativo;
-	}
-
 	public Paciente(PacienteDTO obj) {
 		super();
 		this.id = obj.getId();
