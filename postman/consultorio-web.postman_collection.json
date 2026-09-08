@@ -699,6 +699,305 @@
       ]
     },
     {
+      "name": "Avaliacao",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "POST criar avaliacao  (201)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.environment.set(\"avaliacaoId\", pm.response.json().id);\r\npm.test(\"status 201\", () => pm.response.to.have.status(201));\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/avaliacoes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "avaliacoes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT atualizar status (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"status\": \"AGUARDANDO_LAUDO\"\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/avaliacoes/{{avaliacaoId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "avaliacoes",
+                    "{{avaliacaoId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE soft delete (204)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 204\", () => pm.response.to.have.status(204));\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/avaliacoes/{{avaliacaoId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "avaliacoes",
+                    "{{avaliacaoId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar avaliacoes ativas por paciente (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/avaliacoes/ativas",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "avaliacoes",
+                    "ativas"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar avaliacoes inativas por paciente (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/avaliacoes/inativas",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "avaliacoes",
+                    "inativas"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erros",
+          "item": [
+            {
+              "name": "POST pacienteId Inexistente (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 404\", () => pm.response.to.have.status(404));"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"data_inicio\": \"19/08/2026\"\r\n}\r\n\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/999/avaliacoes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "999",
+                    "avaliacoes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT avaliacaoId Inexistente (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 404\", () => pm.response.to.have.status(404));"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"status\": \"AGUARDANDO_LAUDO\"\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/pacientes/{{pacienteId}}/avaliacoes/999",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "pacientes",
+                    "{{pacienteId}}",
+                    "avaliacoes",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Consultas",
       "item": [
         {
