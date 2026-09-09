@@ -516,6 +516,345 @@
       ]
     },
     {
+      "name": "TestePsicologico",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "POST criar teste (201)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.environment.set(\"testeId\", pm.response.json().id);\r\npm.test(\"status 201\", () => pm.response.to.have.status(201));\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"FDT\",\r\n    \"qtdEstoque\": 10,\r\n    \"estoqueMinimo\": 2,\r\n    \"custoUnitario\": 30.00    \r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar todos os testes (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar ativos (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos/ativos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos",
+                    "ativos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET listar inativos (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos/inativos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos",
+                    "inativos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET buscar por id (200)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos/{{testeId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos",
+                    "{{testeId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT atualizar teste (200)",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"FDT\",\r\n    \"qtdEstoque\": 8,\r\n    \"estoqueMinimo\": 4,\r\n    \"custoUnitario\": 35.00    \r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos/{{testeId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos",
+                    "{{testeId}}"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "DELETE soft delete (204)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 204\", () => pm.response.to.have.status(204));"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "DELETE",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos/{{testeId}}",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos",
+                    "{{testeId}}"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erros",
+          "item": [
+            {
+              "name": "POST campo inválido (422)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 422\", () => pm.response.to.have.status(422));\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \" \",\r\n    \"qtdEstoque\": 10,\r\n    \"estoqueMinimo\": 2,\r\n    \"custoUnitario\": 30.00    \r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET id Inexistente (404)",
+              "request": {
+                "method": "GET",
+                "header": [],
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos/999",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "PUT id inexistente (404)",
+              "request": {
+                "method": "PUT",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n    \"nome\": \"FDT\",\r\n    \"qtdEstoque\": 10,\r\n    \"estoqueMinimo\": 2,\r\n    \"custoUnitario\": 30.00    \r\n}",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/testes-psicologicos/999",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "testes-psicologicos",
+                    "999"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "AnotacoesPacientes",
       "item": [
         {
