@@ -1038,6 +1038,258 @@
       ]
     },
     {
+      "name": "ConsultaTestes",
+      "item": [
+        {
+          "name": "Sucesso",
+          "item": [
+            {
+              "name": "POST Criar consulta_teste (201)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 201\", () => pm.response.to.have.status(201));\r\n"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"testeId\": 1, \r\n   \"qtd\": 2\r\n}\r\n\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas/1/testes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "1",
+                    "testes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "GET Listar por consulta (200)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 200\", () => pm.response.to.have.status(200));"
+                    ]
+                  }
+                }
+              ],
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas/1/testes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "1",
+                    "testes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        },
+        {
+          "name": "Erros",
+          "item": [
+            {
+              "name": "POST consulta Inexistente (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 404\", () => pm.response.to.have.status(404));"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"testeId\": 1, \r\n   \"qtd\": 2\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas/999/testes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "999",
+                    "testes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST teste Inexistente (404)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 404\", () => pm.response.to.have.status(404));"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"testeId\": 999, \r\n   \"qtd\": 2\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas/1/testes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "1",
+                    "testes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Estoque insuficiente (409)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 409\", () => pm.response.to.have.status(409));"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"testeId\": 1, \r\n   \"qtd\": 999\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas/1/testes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "1",
+                    "testes"
+                  ]
+                }
+              },
+              "response": []
+            },
+            {
+              "name": "POST Quantidade ausente (422)",
+              "event": [
+                {
+                  "listen": "test",
+                  "script": {
+                    "type": "text/javascript",
+                    "exec": [
+                      "pm.test(\"status 422\", () => pm.response.to.have.status(422));"
+                    ]
+                  }
+                }
+              ],
+              "request": {
+                "method": "POST",
+                "header": [],
+                "body": {
+                  "mode": "raw",
+                  "raw": "{\r\n   \"testeId\": 1\r\n}\r\n",
+                  "options": {
+                    "raw": {
+                      "language": "json"
+                    }
+                  }
+                },
+                "url": {
+                  "raw": "{{local}}/consultas/1/testes",
+                  "host": [
+                    "{{local}}"
+                  ],
+                  "path": [
+                    "consultas",
+                    "1",
+                    "testes"
+                  ]
+                }
+              },
+              "response": []
+            }
+          ]
+        }
+      ]
+    },
+    {
       "name": "Avaliacao",
       "item": [
         {
